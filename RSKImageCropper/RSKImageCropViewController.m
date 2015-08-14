@@ -137,11 +137,11 @@ static const CGFloat kLayoutImageScrollViewAnimationDuration = 0.25;
     UIApplication *application = [UIApplication rsk_sharedApplication];
     if (application) {
         self.originalStatusBarHidden = application.statusBarHidden;
-        [application setStatusBarHidden:YES];
+        //[application setStatusBarHidden:YES];
     }
     
     self.originalNavigationControllerNavigationBarHidden = self.navigationController.navigationBarHidden;
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    //[self.navigationController setNavigationBarHidden:YES animated:YES];
     
     self.originalNavigationControllerNavigationBarShadowImage = self.navigationController.navigationBar.shadowImage;
     self.navigationController.navigationBar.shadowImage = nil;
