@@ -141,7 +141,7 @@ static const CGFloat kLayoutImageScrollViewAnimationDuration = 0.25;
     }
     
     self.originalNavigationControllerNavigationBarHidden = self.navigationController.navigationBarHidden;
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     
     self.originalNavigationControllerNavigationBarShadowImage = self.navigationController.navigationBar.shadowImage;
     self.navigationController.navigationBar.shadowImage = nil;
