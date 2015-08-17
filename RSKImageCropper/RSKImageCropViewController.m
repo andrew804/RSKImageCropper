@@ -134,12 +134,6 @@ static const CGFloat kLayoutImageScrollViewAnimationDuration = 0.25;
 {
     [super viewWillAppear:animated];
     
-    UIApplication *application = [UIApplication rsk_sharedApplication];
-    if (application) {
-        self.originalStatusBarHidden = application.statusBarHidden;
-        //[application setStatusBarHidden:YES];
-    }
-    
     self.originalNavigationControllerNavigationBarHidden = self.navigationController.navigationBarHidden;
     //[self.navigationController setNavigationBarHidden:YES animated:YES];
     
@@ -150,6 +144,12 @@ static const CGFloat kLayoutImageScrollViewAnimationDuration = 0.25;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    UIApplication *application = [UIApplication rsk_sharedApplication];
+    if (application) {
+        self.originalStatusBarHidden = application.statusBarHidden;
+        [application setStatusBarHidden:YES];
+    }
     
     self.originalNavigationControllerViewBackgroundColor = self.navigationController.view.backgroundColor;
     self.navigationController.view.backgroundColor = [UIColor blackColor];
