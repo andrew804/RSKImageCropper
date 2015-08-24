@@ -774,6 +774,7 @@ static const CGFloat kLayoutImageScrollViewAnimationDuration = 0.25;
     
     CGFloat imageScale = image.scale;
     cropRect = CGRectApplyAffineTransform(cropRect, CGAffineTransformMakeScale(imageScale, imageScale));
+    cropRect = [self performHackToReturnExactSquareImage:cropRect];
     
     // Step 2: create an image using the data contained within the specified rect.
     CGImageRef croppedCGImage = CGImageCreateWithImageInRect(image.CGImage, cropRect);
@@ -835,6 +836,13 @@ static const CGFloat kLayoutImageScrollViewAnimationDuration = 0.25;
         // Step 11: return the cropped image affter processing.
         return croppedImage;
     }
+}
+
+- (CGRect)performHackToReturnExactSquareImage:(CGRect)cropRect
+{
+    // I found that on some images when no zooming had been applied the resulting cropped image could be 1 point off being square.
+    // Srinking the cropRect width and height by 1 seems to prevent this from happening.
+    return CGRectMake(cropRect.origin.x, cropRect.origin.y, cropRect.size.width - 1, cropRect.size.height - 1);
 }
 
 - (void)cropImage
